@@ -137,4 +137,6 @@ def compare_github_relationships():
 
     print("\n--- Done ---")
 
-# --- Main Execution Block
+# --- Main Execution Block ---
+if __name__ == "__main__":
+    compare_github_relationships()
