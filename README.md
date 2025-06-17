@@ -1,5 +1,12 @@
 # GitHub Follower Analyzer
 
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Python 3.x](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://www.python.org/)
+[![GitHub API](https://img.shields.io/badge/GitHub%20API-v3-blueviolet)](https://docs.github.com/en/rest)
+[![Last Commit](https://img.shields.io/github/last-commit/hrosicka/github-follower-analyzer)](https://github.com/hrosicka/github-follower-analyzer/commits/main)
+[![Issues](https://img.shields.io/github/issues/hrosicka/github-follower-analyzer)](https://github.com/hrosicka/github-follower-analyzer/issues)
+[![Stars](https://img.shields.io/github/stars/hrosicka/github-follower-analyzer?style=social)](https://github.com/hrosicka/github-follower-analyzer/stargazers)
+
 A simple script to analyze your GitHub social graph: find out who you follow that doesn't follow you back, and who follows you that you don't follow back.
 
 ## Features
