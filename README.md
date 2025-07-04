@@ -18,6 +18,7 @@ A simple script to analyze your GitHub social graph: find out who you follow tha
 - **Handles large accounts** (uses proper API pagination)
 - **Clear command-line output**
 - **Graceful error handling** for authentication and API rate limits
+- **Optionally exports results to a file (TXT or CSV)**
 
 ## How It Works
 
@@ -25,6 +26,8 @@ This script fetches your followers and users you are following via the GitHub AP
 
 - A list of users you follow who don't follow you back
 - A list of users who follow you, but you don't follow back
+
+You can also choose to export the results to a TXT or CSV file.
 
 ## Requirements
 
@@ -100,6 +103,22 @@ Users who FOLLOW YOU but you DO NOT follow back (1):
 
 --- Done ---
 ```
+
+### Exporting Results
+
+You can now export the results to a TXT or CSV file:
+
+- Export to TXT:  
+  ```bash
+  python main.py --output results.txt
+  ```
+
+- Export to CSV:  
+  ```bash
+  python main.py --output results.csv --format csv
+  ```
+
+Results will always be printed to the console by default. Providing arguments for exporting is optional; if omitted, the script behaves as before.
 
 ## Notes
 
