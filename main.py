@@ -1,9 +1,11 @@
+import argparse
 import requests
 import os
+import csv
 
 # --- Configuration ---
 # Replace 'YOUR_GITHUB_USERNAME' with your actual GitHub username.
-GITHUB_USERNAME = 'YOUR_GITHUB_USERNAME' 
+GITHUB_USERNAME = 'YOUR_GITHUB_USERNAME'
 
 # Replace 'YOUR_GITHUB_TOKEN' with your Personal Access Token.
 # !!! IMPORTANT: NEVER UPLOAD THIS TOKEN TO A PUBLIC REPOSITORY! !!!
@@ -14,7 +16,7 @@ GITHUB_USERNAME = 'YOUR_GITHUB_USERNAME'
 # On Linux/macOS: export GITHUB_PAT='ghp_...'
 # On Windows (Cmd): set GITHUB_PAT=ghp_...
 # On Windows (PowerShell): $env:GITHUB_PAT='ghp_...'
-GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN' 
+GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN'
 
 # Base URL for the GitHub API.
 BASE_URL = 'https://api.github.com'
@@ -86,7 +88,31 @@ def get_github_users(url, token, user_type_label):
     
     return users
 
-def compare_github_relationships():
+def write_results_txt(non_followers, fans, file_path):
+    """Writes the results to a plain text file."""
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write("--- Comparison Results ---\n\n")
+        f.write(f"Users you follow who DO NOT follow you back ({len(non_followers)}):\n")
+        for user in sorted(non_followers):
+            f.write(f"- {user}\n")
+        f.write("\nUsers who FOLLOW YOU but you DO NOT follow back ({0}):\n".format(len(fans)))
+        for user in sorted(fans):
+            f.write(f"- {user}\n")
+        f.write("\n--- Done ---\n")
+
+def write_results_csv(non_followers, fans, file_path):
+    """Writes the results to a CSV file."""
+    with open(file_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["Users you follow who DO NOT follow you back"])
+        for user in sorted(non_followers):
+            writer.writerow([user])
+        writer.writerow([])
+        writer.writerow(["Users who FOLLOW YOU but you DO NOT follow back"])
+        for user in sorted(fans):
+            writer.writerow([user])
+
+def compare_github_relationships(output_file=None, output_format="txt"):
     """
     Fetches the lists of followers and following from GitHub using the API
     and then compares them to identify non-followers and fans.
@@ -116,27 +142,40 @@ def compare_github_relationships():
     # This is a set difference: elements in 'followers' that are NOT in 'following'.
     fans = followers - following
 
+    # Print results to console
     print("\n--- Comparison Results ---")
-
     print(f"\nTotal Followers: {len(followers)}")
     print(f"Total Following: {len(following)}")
 
     if non_followers:
         print(f"\nUsers you follow who DO NOT follow you back ({len(non_followers)}):")
-        for user in sorted(list(non_followers)):
+        for user in sorted(non_followers):
             print(f"- {user}")
     else:
         print("\nGreat news! Everyone you follow on GitHub also follows you back.")
 
     if fans:
         print(f"\nUsers who FOLLOW YOU but you DO NOT follow back ({len(fans)}):")
-        for user in sorted(list(fans)):
+        for user in sorted(fans):
             print(f"- {user}")
     else:
         print("\nGreat news! You follow back all of your GitHub fans.")
 
     print("\n--- Done ---")
 
+    # Output to file if specified
+    if output_file:
+        if output_format == "csv":
+            write_results_csv(non_followers, fans, output_file)
+        else:
+            write_results_txt(non_followers, fans, output_file)
+        print(f"\nResults exported to '{output_file}' in {output_format.upper()} format.")
+
 # --- Main Execution Block ---
 if __name__ == "__main__":
-    compare_github_relationships()
+    parser = argparse.ArgumentParser(description="Analyze your GitHub followers/following relationships.")
+    parser.add_argument("--output", type=str, help="Output file to save the results (e.g., results.txt or results.csv)")
+    parser.add_argument("--format", type=str, choices=["txt", "csv"], default="txt", help="Output file format (txt or csv, default: txt)")
+    args = parser.parse_args()
+
+    compare_github_relationships(output_file=args.output, output_format=args.format)
