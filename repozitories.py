@@ -46,7 +46,7 @@ def get_following_users(username, token):
         try:
             response = requests.get(url, headers=headers, params=params)
             response.raise_for_status() # Raises an exception for 4xx/5xx errors
-        except requests.exceptions.RequestException as e:
+        except Exception as e:
             print(f"Error communicating with API: {e}")
             return None
         
@@ -78,7 +78,7 @@ def get_user_details(username_to_check, token):
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         return response.json()
-    except requests.exceptions.RequestException as e:
+    except Exception as e:
         # Print error but do not stop the entire script run
         print(f"Error fetching details for user '{username_to_check}'. Error: {e}")
         return None
