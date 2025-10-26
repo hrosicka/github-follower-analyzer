@@ -9,6 +9,8 @@
 
 A simple script to analyze your GitHub social graph: find out who you follow that doesn't follow you back, and who follows you that you don't follow back.
 
+---
+
 ## Features
 
 - **Analyzes your GitHub "followers" and "following" relationships**
@@ -19,6 +21,8 @@ A simple script to analyze your GitHub social graph: find out who you follow tha
 - **Clear command-line output**
 - **Graceful error handling** for authentication and API rate limits
 - **Optionally exports results to a file (TXT or CSV)**
+
+---
 
 ## How It Works
 
@@ -34,6 +38,8 @@ You can also choose to export the results to a TXT or CSV file.
 - Python 3.x
 - `requests` module (`pip install requests`)
 - GitHub Personal Access Token (with `read:user` permissions)
+
+---
 
 ## Setup
 
@@ -79,6 +85,8 @@ You can also choose to export the results to a TXT or CSV file.
      $env:GITHUB_PAT='your-personal-access-token'
      ```
 
+---
+
 ## Usage
 
 Run the script:
@@ -104,6 +112,8 @@ Users who FOLLOW YOU but you DO NOT follow back (1):
 --- Done ---
 ```
 
+---
+
 ### Exporting Results
 
 You can now export the results to a TXT or CSV file:
@@ -120,14 +130,22 @@ You can now export the results to a TXT or CSV file:
 
 Results will always be printed to the console by default. Providing arguments for exporting is optional; if omitted, the script behaves as before.
 
+---
+
 ## Notes
 
 - The script handles pagination to support accounts with many followers/followings.
 - Authentication and rate limit errors are clearly reported.
 - **Never commit your Personal Access Token to a public repository!**
 
-## License
+---
 
-MIT License
+## 👩‍💻 Author
+
+Lovingly crafted by [Hanka Robovska](https://github.com/hrosicka) 👩‍🔬
 
 ---
+
+## 📝 License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details. Free to use, modify, and distribute as needed.
