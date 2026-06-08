@@ -1,12 +1,21 @@
 # GitHub Follower Analyzer
 
 <p align="left">
-  <img src="https://img.shields.io/github/actions/workflow/status/hrosicka/github-follower-analyzer/tests.yml?branch=main&style=flat-square&label=tests" alt="GitHub Actions Tests Status">
-  <img src="https://img.shields.io/github/last-commit/hrosicka/github-follower-analyzer?style=flat-square&color=blue" alt="Last Commit">
-  <img src="https://img.shields.io/github/issues/hrosicka/github-follower-analyzer?style=flat-square&color=success" alt="Issues">
-  <img src="https://img.shields.io/github/stars/hrosicka/github-follower-analyzer?style=flat-square&color=yellow" alt="Stars">
-  <img src="https://img.shields.io/badge/python-3.7%2B-blue?style=flat-square" alt="Python Version">
-  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="MIT License">
+  <a href="https://github.com/hrosicka/github-follower-analyzer/actions/workflows/tests.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/hrosicka/github-follower-analyzer/tests.yml?branch=main&style=for-the-badge&logo=github&label=Tests" alt="Tests Status"/>
+  </a>
+
+  <a href="https://github.com/hrosicka/github-follower-analyzer/commits/main">
+    <img src="https://img.shields.io/github/last-commit/hrosicka/github-follower-analyzer?style=for-the-badge&color=blue&logo=git" alt="Last Commit"/>
+  </a>
+
+  <a href="https://github.com/hrosicka/github-follower-analyzer/issues">
+    <img src="https://img.shields.io/github/issues/hrosicka/github-follower-analyzer?style=for-the-badge&color=brightgreen&logo=github" alt="Issues"/>
+  </a>
+
+  <a href="https://github.com/hrosicka/github-follower-analyzer/stargazers">
+    <img src="https://img.shields.io/github/stars/hrosicka/github-follower-analyzer?style=for-the-badge&color=yellow&logo=github" alt="Stars"/>
+  </a>
 </p>
 
 A simple script to analyze your GitHub social graph: find out who you follow that doesn't follow you back, and who follows you that you don't follow back.
