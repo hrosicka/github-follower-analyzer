@@ -1,0 +1,9 @@
+# Testing and core dependencies
+pytest>=7.0.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Code quality and formatting
+black>=23.0.0        # code formatting
+flake8>=6.0.0        # linting
+mypy>=1.0.0          # type checking
